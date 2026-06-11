@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build">
+  <Sdk Name="Microsoft.Build.Sql" Version="2.1.0" />
+  <PropertyGroup>
+    <Name>DeviceManagement</Name>
+    <ProjectGuid>{00859671-5bc4-4bb1-856c-e4e7e5d0863f}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <ModelCollation>1033, CI</ModelCollation>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="dm" />
+    <Folder Include="dm\Stored Procedures" />
+    <Folder Include="dm\Stored Procedures\Create" />
+    <Folder Include="dm\Stored Procedures\Delete" />
+    <Folder Include="dm\Stored Procedures\Get" />
+    <Folder Include="dm\Stored Procedures\Update" />
+    <Folder Include="dm\Tables" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\Seeds" />
+    <Folder Include="Security" />
+    <Folder Include="Security\Schemas" />
+    <Folder Include="SchemaComparison" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SchemaComparison\project-to-dev.scmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dm\Tables\Devices.sql" />
+    <Build Include="dm\Tables\DeviceStatuses.sql" />
+    <Build Include="dm\Tables\DeviceTypes.sql" />
+    <None Include="Scripts\Seeds\DataSeed.sql" />
+    <None Include="Scripts\Seeds\Seed.sql" />
+    <None Include="Scripts\DeviceManagementv0.1.0.sql" />
+    <Build Include="Security\Schemas\dm.sql" />
+  </ItemGroup>
+  <Target Name="BeforeBuild">
+    <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
+  </Target>
+</Project>
